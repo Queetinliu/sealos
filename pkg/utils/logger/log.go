@@ -58,7 +58,7 @@ var LevelMap = map[string]logLevel{
 var adapters = make(map[string]Logger)
 
 // 日志记录等级字段
-var levelPrefix = [LevelTrace + 1]string{
+var levelPrefix = [LevelTrace + 1]string{  //LevelTrace即前面的数字
 	"EMER",
 	"ALRT",
 	"CRIT",
@@ -90,7 +90,7 @@ func Register(name string, log Logger) {
 	if log == nil {
 		panic("logs: Register provide is nil")
 	}
-	if _, ok := adapters[name]; ok {
+	if _, ok := adapters[name]; ok {     //ok不为空已被注册几次
 		panic("logs: Register called twice for provider " + name)
 	}
 	adapters[name] = log
@@ -121,7 +121,7 @@ type LocalLogger struct {
 }
 
 func NewLogger(depth ...int) *LocalLogger {
-	dep := append(depth, 2)[0]
+	dep := append(depth, 2)[0]  //将2附加进depth
 	l := new(LocalLogger)
 	// appName用于记录网络传输时标记的程序发送方，
 	// 通过环境变量APPSN进行设置,默认为NONE,此时无法通过网络日志检索区分不同服务发送方
@@ -146,7 +146,7 @@ type logConfig struct {
 }
 
 func init() {
-	defaultLogger = NewLogger(3)
+	defaultLogger = NewLogger(3)   //初始化depth为3
 }
 
 func CfgAndFile(debugMod bool, logDir, name string, showPath bool) {
