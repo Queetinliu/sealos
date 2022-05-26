@@ -56,7 +56,7 @@ func init() {
 
 func onBootOnDie() {
 	var rootDirs = []string{
-		contants.LogPath(),
+		contants.LogPath(),        //获取日志、数据路径及工作目录，定义见contants包
 		contants.DataPath(),
 		contants.Workdir(),
 	}
