@@ -23,5 +23,5 @@ func main() {
 	if buildah.InitReexec() {   //这里为什么要层层引用呢？buildah.InitReexec又引用reexec的如果未指定任何参数，程序立即退出
 		return
 	}
-	cmd.Execute()  //执行cmd模块root.go里的这个方法。
+	cmd.Execute()  //执行cmd模块root.go里的这个方法。安装时用的sealos run,去看cmd/run.go
 }
