@@ -23,7 +23,7 @@ const (
 )
 
 func Workdir() string {
-	return filepath.Join(GetHomeDir(), ".sealos")
+	return filepath.Join(GetHomeDir(), ".sealos")      //GetHomeDir()一个专门的获取家目录的方法，未使用go自带的，因这个可以跨平台
 }
 
 func ClusterDir(clusterName string) string {
