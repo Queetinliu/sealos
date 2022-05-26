@@ -16,7 +16,7 @@ package main
 
 import (
 	"github.com/containers/buildah"
-	"github.com/labring/sealos/cmd/sealos/cmd"
+	"github.com/labring/sealos/cmd/sealos/cmd"  //包被导入已执行初始化函数
 )
 
 func main() {
