@@ -19,7 +19,7 @@ package contants
 import "path/filepath"
 
 const (
-	DefaultClusterRootfsDir          = "/var/lib/sealos"
+	DefaultClusterRootfsDir          = "/var/lib/sealos"     //系统根目录
 	DefaultInitKubeadmFileName       = "kubeadm-init.yaml"
 	DefaultJoinMasterKubeadmFileName = "kubeadm-join-master.yaml"
 	DefaultJoinNodeKubeadmFileName   = "kubeadm-join-node.yaml"
@@ -39,10 +39,10 @@ const (
 )
 
 func LogPath() string {
-	return filepath.Join(DefaultClusterRootfsDir, "logs")
+	return filepath.Join(DefaultClusterRootfsDir, "logs")  //日志路径 /var/lib/sealos/logs
 }
 func DataPath() string {
-	return filepath.Join(DefaultClusterRootfsDir, "data")
+	return filepath.Join(DefaultClusterRootfsDir, "data")  
 }
 
 type Data interface {
