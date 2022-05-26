@@ -58,13 +58,13 @@ func onBootOnDie() {
 	var rootDirs = []string{
 		contants.LogPath(),        //获取日志、数据路径及工作目录，定义见contants包。Logpath()及DataPaht()见contans/data.go
 		contants.DataPath(),
-		contants.Workdir(),
+		contants.Workdir(),      //Wrokdir()见contants/worker.go，为家目录的.sealos下
 	}
-	if err := file.MkDirs(rootDirs...); err != nil {
+	if err := file.MkDirs(rootDirs...); err != nil {  //创建上述目录，见file/file_v2.go，为什么不用系统自带的呢？
 		logger.Error(err)
 		panic(1)
 	}
-	logger.CfgAndFile(debug, contants.LogPath(), "sealos", false)
+	logger.CfgAndFile(debug, contants.LogPath(), "sealos", false)  
 	setupLogrus()
 }
 
