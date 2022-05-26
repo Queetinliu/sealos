@@ -20,8 +20,8 @@ import (
 )
 
 func main() {
-	if buildah.InitReexec() {
+	if buildah.InitReexec() {   //这里为什么要层层引用呢？buildah.InitReexec又引用reexec的如果未指定任何参数，程序立即退出
 		return
 	}
-	cmd.Execute()
+	cmd.Execute()  //执行cmd模块的这个方法。
 }
