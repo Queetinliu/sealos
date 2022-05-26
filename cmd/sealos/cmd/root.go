@@ -51,7 +51,7 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(onBootOnDie)
 
-	rootCmd.PersistentFlags().BoolVar(&debug, "debug", false, "enable debug logger")
+	rootCmd.PersistentFlags().BoolVar(&debug, "debug", false, "enable debug logger")   //这个持久标志,必须设置的
 }
 
 func onBootOnDie() {
@@ -61,16 +61,16 @@ func onBootOnDie() {
 		contants.Workdir(),      //Wrokdir()见contants/worker.go，为家目录的.sealos下
 	}
 	if err := file.MkDirs(rootDirs...); err != nil {  //创建上述目录，见file/file_v2.go，为什么不用系统自带的呢？
-		logger.Error(err)
+		logger.Error(err)   //logger这里引用了另一个很好地处理日志的模块，报错并退出
 		panic(1)
 	}
-	logger.CfgAndFile(debug, contants.LogPath(), "sealos", false)  
+	logger.CfgAndFile(debug, contants.LogPath(), "sealos", false)    //使用这个模块，设置日志，将日志输出到日志路径
 	setupLogrus()
 }
 
 const logLevel = "warn"
 
 func setupLogrus() {
-	logrusLvl, _ := logrus.ParseLevel(logLevel)
+	logrusLvl, _ := logrus.ParseLevel(logLevel)   //设置日志级别
 	logrus.SetLevel(logrusLvl)
 }
