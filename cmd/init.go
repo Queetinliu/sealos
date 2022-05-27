@@ -90,7 +90,7 @@ var initCmd = &cobra.Command{
 		} else {
 			c.Dump(cfgFile)
 		}
-		install.BuildInit()
+		install.BuildInit()  //在这里执行安装，看看install/init.go
 		// 安装完成后生成完整版
 		c.Dump(cfgFile)
 		logger.Info(contact)
@@ -103,6 +103,8 @@ var initCmd = &cobra.Command{
 		}
 	},
 }
+
+//先显示初始化的命令，然后展示初始化命令。转换输入的配置。
 
 func init() {
 	initCmd.AddCommand(NewInitGenerateCmd())
