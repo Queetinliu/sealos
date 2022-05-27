@@ -186,7 +186,7 @@ func RandString(len int) string {
 // a < b : -1
 // a == b : 0
 // a > b : 1
-func Cmp(a, b net.IP) int {
+func Cmp(a, b net.IP) int {      
 	aa := ipToInt(a)
 	bb := ipToInt(b)
 
@@ -194,7 +194,7 @@ func Cmp(a, b net.IP) int {
 		logger.Error("ip range %s-%s is invalid", a.String(), b.String())
 		os.Exit(-1)
 	}
-	return aa.Cmp(bb)
+	return aa.Cmp(bb)    //转换为Int后，使用math/big中Int的Cmp()方法比较
 }
 
 func ipToInt(ip net.IP) *big.Int {
@@ -209,7 +209,7 @@ func intToIP(i *big.Int) net.IP {
 }
 
 func stringToIP(i string) net.IP {
-	return net.ParseIP(i).To4()
+	return net.ParseIP(i).To4()  //利用这个函数将string转换为ip
 }
 
 // NextIP returns IP incremented by 1
@@ -232,10 +232,10 @@ func DecodeIPs(ips []string) []string {
 			ip = ipport[0]
 			port = ipport[1]
 		}
-		if iprange := strings.Split(ip, "-"); len(iprange) == 2 { //如果检测到-
-			for Cmp(stringToIP(iprange[0]), stringToIP(iprange[1])) <= 0 {
-				res = append(res, fmt.Sprintf("%s:%s", iprange[0], port))
-				iprange[0] = NextIP(stringToIP(iprange[0])).String()
+		if iprange := strings.Split(ip, "-"); len(iprange) == 2 { //如果检测到-,当作一段连续范围
+			for Cmp(stringToIP(iprange[0]), stringToIP(iprange[1])) <= 0 {   //将其转换为ip，再又转换为int比较
+				res = append(res, fmt.Sprintf("%s:%s", iprange[0], port)) //将开始ip及端口号22加入res
+				iprange[0] = NextIP(stringToIP(iprange[0])).String()  //得到下一个ip直到最后一个
 			}
 		} else {
 			if stringToIP(ip) == nil {
