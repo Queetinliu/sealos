@@ -97,7 +97,7 @@ func downloadFile(location string) (filePATH, md5 string) {
 	return location, md5
 }
 
-//根据url 获取command
+//根据url 获取command    //如果写的是url，则生成wget开头的命令
 func downloadCmd(url string) string {
 	//only http
 	u, isHTTP := isURL(url)
