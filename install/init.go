@@ -40,7 +40,7 @@ func BuildInit() {
 	// 所有node节点
 	nodes := NodeIPs
 	hosts := append(masters, nodes...)
-	i := &SealosInstaller{
+	i := &SealosInstaller{               //这个定义在sealos.go里
 		Hosts:     hosts,
 		Masters:   masters,
 		Nodes:     nodes,
