@@ -27,7 +27,7 @@ func (s *SealosInstaller) SendPackage() {
 	deletekubectl := `sed -i '/kubectl/d;/sealos/d' /root/.bashrc `
 	completion := "echo 'command -v kubectl &>/dev/null && source <(kubectl completion bash)' >> /root/.bashrc && echo '[ -x /usr/bin/sealos ] && source <(sealos completion bash)' >> /root/.bashrc && source /root/.bashrc"
 	kubeHook = kubeHook + " && " + deletekubectl + " && " + completion
-	PkgURL = SendPackage(PkgURL, s.Hosts, "/root", nil, &kubeHook)
+	PkgURL = SendPackage(PkgURL, s.Hosts, "/root", nil, &kubeHook)  //注意这里用的download.go里面的函数
 }
 
 // SendSealos is send the exec sealos to /usr/bin/sealos
