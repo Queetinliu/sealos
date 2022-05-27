@@ -44,7 +44,7 @@ to quickly create a Cobra application.`,
 	// has an action associated with it:
 	//	Run: func(cmd *cobra.Command, args []string) { },
 }
-
+/*首先看看init()函数，调用根命令时初始化配置，包括创建日志目录及文件，并配置日志配置，将日志写到文件 */
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
