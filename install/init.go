@@ -47,7 +47,7 @@ func BuildInit() {
 		Network:   Network,
 		APIServer: APIServer,
 	}
-	i.CheckValid()
+	i.CheckValid()  //使用check.go中的方法进行检查
 	i.Print()
 	i.SendSealos()
 	i.SendPackage()
