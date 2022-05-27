@@ -33,7 +33,7 @@ import (
 
 //BuildInit is
 func BuildInit() {
-	MasterIPs = ParseIPs(MasterIPs)
+	MasterIPs = ParseIPs(MasterIPs)   //这里用到了install/utils.go里的方法，转换ip地址。
 	NodeIPs = ParseIPs(NodeIPs)
 	// 所有master节点
 	masters := MasterIPs
