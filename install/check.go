@@ -51,7 +51,7 @@ func (s *SealosInstaller) CheckValid() {
 	dict := make(map[string]bool)
 	var errList []string
 	for _, h := range s.Hosts {
-		hostname := SSHConfig.CmdToString(h, "hostname", "") //获取主机名
+		hostname := SSHConfig.CmdToString(h, "hostname", "") //获取主机名，用到了这里pkg/sshcmd/sshutil/ssh.go的方法
 		if hostname == "" {
 			logger.Error("[%s] ------------ check error", h)
 			os.Exit(1)
