@@ -48,7 +48,7 @@ func BuildInit() {
 		APIServer: APIServer,
 	}
 	i.CheckValid()  //使用check.go中的方法进行检查
-	i.Print()
+	i.Print()   //使用print.go中方法打印出配置信息
 	i.SendSealos()
 	i.SendPackage()
 	i.Print("SendPackage")
