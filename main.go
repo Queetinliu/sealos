@@ -22,3 +22,4 @@ func main() {
 	cmd.Execute()   //执行cmd模块root.go里的这个方法。安装时用的sealos init,去看cmd/init.go
 }
              /*这里使用了corba这个命令行模块，其命令与文件对应，例如sealos init对应init.go,sealos add对应add.go */
+             /*sealos是根命令，对应root.go，先看看root.go*/
