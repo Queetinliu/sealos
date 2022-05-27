@@ -15,9 +15,9 @@
 package main
 
 import (
-	"github.com/fanux/sealos/cmd"
+	"github.com/fanux/sealos/cmd"     //包被导入已执行初始化函数
 )
 
 func main() {
-	cmd.Execute()
+	cmd.Execute()   //执行cmd模块root.go里的这个方法。安装时用的sealos run,去看cmd/run.go
 }
