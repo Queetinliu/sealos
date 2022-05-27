@@ -107,9 +107,9 @@ func (ss *SSH) CmdAsync(host string, cmd string) error {
 
 //CmdToString is in host exec cmd and replace to spilt str
 func (ss *SSH) CmdToString(host, cmd, spilt string) string {
-	if data := ss.Cmd(host, cmd); data != nil {
+	if data := ss.Cmd(host, cmd); data != nil {  //连结主机执行命令
 		str := string(data)
-		str = strings.ReplaceAll(str, "\r\n", spilt)
+		str = strings.ReplaceAll(str, "\r\n", spilt)  //将\r\n替换
 		return str
 	}
 	return ""
