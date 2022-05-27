@@ -228,7 +228,7 @@ func DecodeIPs(ips []string) []string {
 	var port string
 	for _, ip := range ips {
 		port = "22"
-		if ipport := strings.Split(ip, ":"); len(ipport) == 2 {
+		if ipport := strings.Split(ip, ":"); len(ipport) == 2 {  //解析ip及端口
 			ip = ipport[0]
 			port = ipport[1]
 		}
