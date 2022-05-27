@@ -83,17 +83,17 @@ func DownloadFile(location string) (filePATH, md5 string) {
 //
 func downloadFile(location string) (filePATH, md5 string) {
 	if _, isURL := isURL(location); isURL {
-		absPATH := "/tmp/sealos/" + path.Base(location)
+		absPATH := "/tmp/sealos/" + path.Base(location)  //如果是url这里获取的是文件名
 		if !cmd.IsFileExist(absPATH) {
 			//generator download cmd
 			dwnCmd := downloadCmd(location)
 			//os exec download command
-			cmd.Cmd("/bin/sh", "-c", "mkdir -p /tmp/sealos && cd /tmp/sealos && "+dwnCmd)
+			cmd.Cmd("/bin/sh", "-c", "mkdir -p /tmp/sealos && cd /tmp/sealos && "+dwnCmd)  //如果是url调用wget的shell命令下载文件
 		}
 		location = absPATH
 	}
 	//file md5
-	md5 = md5sum.FromLocal(location)
+	md5 = md5sum.FromLocal(location) //计算md5
 	return location, md5
 }
 
