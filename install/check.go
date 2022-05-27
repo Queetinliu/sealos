@@ -56,7 +56,7 @@ func (s *SealosInstaller) CheckValid() {
 			logger.Error("[%s] ------------ check error", h)
 			os.Exit(1)
 		} else {
-			SetHosts(h, hostname)
+			SetHosts(h, hostname) //设置/etc/hosts
 			if _, ok := dict[hostname]; !ok {
 				dict[hostname] = true //不冲突, 主机名加入字典
 			} else {
@@ -65,7 +65,7 @@ func (s *SealosInstaller) CheckValid() {
 			}
 			logger.Info("[%s]  ------------ check ok", h)
 		}
-		if s.Network == net.CILIUM {
+		if s.Network == net.CILIUM {  //用组件CILIUM,需内核版本高于5.3且有bpf
 			if err := SSHConfig.CmdAsync(h, "uname -r | grep 5 | awk -F. '{if($2>3)print \"ok\"}' | grep ok && exit 0 || exit 1"); err != nil {
 				logger.Error("[%s] ------------ check kernel version  < 5.3", h)
 				os.Exit(1)
