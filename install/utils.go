@@ -228,11 +228,11 @@ func DecodeIPs(ips []string) []string {
 	var port string
 	for _, ip := range ips {
 		port = "22"
-		if ipport := strings.Split(ip, ":"); len(ipport) == 2 {  //解析ip及端口
+		if ipport := strings.Split(ip, ":"); len(ipport) == 2 {  //如果检测到:分隔符，解析ip及端口
 			ip = ipport[0]
 			port = ipport[1]
 		}
-		if iprange := strings.Split(ip, "-"); len(iprange) == 2 {
+		if iprange := strings.Split(ip, "-"); len(iprange) == 2 { //如果检测到-
 			for Cmp(stringToIP(iprange[0]), stringToIP(iprange[1])) <= 0 {
 				res = append(res, fmt.Sprintf("%s:%s", iprange[0], port))
 				iprange[0] = NextIP(stringToIP(iprange[0])).String()
