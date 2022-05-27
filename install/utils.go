@@ -312,7 +312,7 @@ func GetRemoteHostName(hostIP string) string {
 
 //获取sealos绝对路径
 func FetchSealosAbsPath() string {
-	ex, _ := os.Executable()
+	ex, _ := os.Executable()  // os.Executable()获取启动当前进程的文件路径，也就是sealos了
 	exPath, _ := filepath.Abs(ex)
 	return exPath
 }
