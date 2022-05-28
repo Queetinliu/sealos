@@ -49,7 +49,7 @@ func BuildInit() {
 	}
 	i.CheckValid()  //使用check.go中的方法进行检查
 	i.Print()   //使用print.go中方法打印出配置信息
-	i.SendSealos() //使用send.go中的函数
+	i.SendSealos() //使用send.go中的函数，发送最新的sealos包
 	i.SendPackage()
 	i.Print("SendPackage")
 	i.KubeadmConfigInstall()
