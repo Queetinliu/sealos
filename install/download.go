@@ -29,7 +29,7 @@ import (
 //md5
 //dst: /root
 //hook: cd /root && rm -rf kube && tar zxvf %s  && cd /root/kube/shell && sh init.sh
-func SendPackage(location string, hosts []string, dst string, before, after *string) string {
+func SendPackage(location string, hosts []string, dst string, before, after *string) string {    //确认是否是最新的md5，不是的话替换，并执行before和after命令
 	var md5 string
 	location, md5 = downloadFile(location)
 	pkg := path.Base(location)
