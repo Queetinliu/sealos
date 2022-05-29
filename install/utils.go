@@ -461,7 +461,7 @@ func GetMajorMinorInt(version string) (major, minor int) {
 		v := strings.Split(version, "-")[0]
 		version = v
 	}
-	version = strings.Replace(version, "v", "", -1)
+	version = strings.Replace(version, "v", "", -1)  //替换所有的v
 	versionArr := strings.Split(version, ".")
 	if len(versionArr) >= 2 {
 		majorStr := versionArr[0] + versionArr[1]
