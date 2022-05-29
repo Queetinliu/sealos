@@ -50,9 +50,9 @@ func BuildInit() {
 	i.CheckValid()  //使用check.go中的方法进行检查
 	i.Print()   //使用print.go中方法打印出配置信息
 	i.SendSealos() //使用send.go中的函数，发送最新的sealos包
-	i.SendPackage()
+	i.SendPackage()  //发送sealos包
 	i.Print("SendPackage")
-	i.KubeadmConfigInstall()
+	i.KubeadmConfigInstall()  //这个函数在下面
 	i.Print("SendPackage", "KubeadmConfigInstall")
 	i.GenerateCert()
 	//生成kubeconfig的时候kubeadm的kubeconfig阶段会检查硬盘是否kubeconfig，有则跳过
@@ -89,9 +89,9 @@ func (s *SealosInstaller) getCgroupDriverFromShell(h string) string {
 //KubeadmConfigInstall is
 func (s *SealosInstaller) KubeadmConfigInstall() {
 	var templateData string
-	CgroupDriver = s.getCgroupDriverFromShell(s.Masters[0])
+	CgroupDriver = s.getCgroupDriverFromShell(s.Masters[0])  //这里获取cgdriver，函数在下面。如果有常量定义在contants.go里
 	if KubeadmFile == "" {
-		templateData = string(Template())
+		templateData = string(Template())  //Template()来自于generator.go里。如果未配置kubeadm里文件，就用模板生成的；有的话就读取kubeadm
 	} else {
 		fileData, err := ioutil.ReadFile(KubeadmFile)
 		defer func() {
