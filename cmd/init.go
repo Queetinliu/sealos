@@ -70,7 +70,7 @@ var exampleInit = `
 `
 
 // initCmd represents the init command
-var initCmd = &cobra.Command{
+var initCmd = &cobra.Command{  //这里指定了sealos init的命令
 	Use:   "init",
 	Short: "Simplest way to init your kubernets HA cluster",
 	Long: `sealos init --master 192.168.0.2 --master 192.168.0.3 --master 192.168.0.4 \
@@ -81,7 +81,7 @@ var initCmd = &cobra.Command{
 		c := &install.SealConfig{}
 		// 没有重大错误可以直接保存配置. 但是apiservercertsans为空. 但是不影响用户 clean
 		// 如果用户指定了配置文件,并不使用--master, 这里就不dump, 需要使用load获取配置文件了.
-		if cfgFile != "" && len(install.MasterIPs) == 0 {
+		if cfgFile != "" && len(install.MasterIPs) == 0 { 
 			err := c.Load(cfgFile)
 			if err != nil {
 				logger.Error("load cfgFile %s err: %q", cfgFile, err)
