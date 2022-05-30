@@ -51,7 +51,7 @@ func CMD(altNames []string, hostIP, hostName, serviceCIRD, DNSDomain string) str
 
 // GenerateCert generate all cert.
 func GenerateCert(certPATH, certEtcdPATH string, altNames []string, hostIP, hostName, serviceCIRD, DNSDomain string) {
-	certConfig, err := NewSealosCertMetaData(certPATH, certEtcdPATH, altNames, serviceCIRD, hostName, hostIP, DNSDomain)
+	certConfig, err := NewSealosCertMetaData(certPATH, certEtcdPATH, altNames, serviceCIRD, hostName, hostIP, DNSDomain) //先获取生成证书的各种变量
 	if err != nil {
 		logger.Error("generator cert config failed %s", err)
 		os.Exit(-1)
