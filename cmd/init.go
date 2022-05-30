@@ -82,7 +82,7 @@ var initCmd = &cobra.Command{  //这里指定了sealos init的命令
 		// 没有重大错误可以直接保存配置. 但是apiservercertsans为空. 但是不影响用户 clean
 		// 如果用户指定了配置文件,并不使用--master, 这里就不dump, 需要使用load获取配置文件了.
 		if cfgFile != "" && len(install.MasterIPs) == 0 { 
-			err := c.Load(cfgFile)
+			err := c.Load(cfgFile)   //这里使用了install/config.go中的方法，先从配置文件读取配置
 			if err != nil {
 				logger.Error("load cfgFile %s err: %q", cfgFile, err)
 				os.Exit(1)
